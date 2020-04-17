@@ -11,10 +11,14 @@ steps:
   - name: docker-push
     image: plugins/docker
     settings:
+      password:
+        from_secret: dockerhub_password
       repo: polygonio/swagger-cli
       tag:
         - ${DRONE_BRANCH/master/latest}
         - ${DRONE_COMMIT}
+      username:
+        from_secret: dockerhub_username
 
 trigger:
   branch:
